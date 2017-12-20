@@ -1,0 +1,83 @@
+{
+    "name": "rinvex/testimonials",
+    "description": "Rinvex Testimonials is a polymorphic Laravel package, for managing testimonials. You can use it however you want, for customers to give testimonials, or for users can give profile recommendations, or any other scenario you imagine.",
+    "keywords": [
+        "model",
+        "rinvex",
+        "laravel",
+        "eloquent",
+        "testimonial",
+        "testimonials",
+        "recommendations",
+        "polymorphic",
+        "attestant"
+    ],
+    "license": "MIT",
+    "homepage": "https://rinvex.com",
+    "support": {
+        "email": "help@rinvex.com",
+        "issues": "https://github.com/rinvex/testimonials/issues",
+        "source": "https://github.com/rinvex/testimonials",
+        "docs": "https://github.com/rinvex/testimonials/blob/master/README.md"
+    },
+    "authors": [
+        {
+            "name": "Rinvex LLC",
+            "homepage": "https://rinvex.com",
+            "email": "help@rinvex.com"
+        },
+        {
+            "name": "Abdelrahman Omran",
+            "homepage": "https://omranic.com",
+            "email": "me@omranic.com",
+            "role": "Project Lead"
+        },
+        {
+            "name": "The Generous Laravel Community",
+            "homepage": "https://github.com/rinvex/testimonials/contributors"
+        }
+    ],
+    "require": {
+        "php": "^7.0.0",
+        "watson/validating": "^3.0.0",
+        "illuminate/console": "~5.5.0",
+        "illuminate/support": "~5.5.0",
+        "illuminate/database": "~5.5.0",
+        "rinvex/cacheable": "dev-develop",
+        "rinvex/support": "dev-develop"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0.0",
+        "illuminate/container": "~5.5.0"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "Rinvex\\Testimonials\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rinvex\\Testimonials\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Rinvex\\Testimonials\\Providers\\TestimonialsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
