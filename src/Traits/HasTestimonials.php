@@ -20,9 +20,9 @@ trait HasTestimonials
     /**
      * Define a one-to-many relationship.
      *
-     * @param  string  $related
-     * @param  string  $foreignKey
-     * @param  string  $localKey
+     * @param string $related
+     * @param string $foreignKey
+     * @param string $localKey
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
