@@ -1,16 +1,14 @@
 {
     "name": "rinvex/testimonials",
-    "description": "Rinvex Testimonials is a polymorphic Laravel package, for managing testimonials. You can use it however you want, for customers to give testimonials, or for users can give profile recommendations, or any other scenario you imagine.",
+    "description": "Rinvex Testimonials is a Laravel package for managing testimonials. Customers can give you testimonials, and you can approve or disapprove each individually. Testimonials are good for showing the passion and love your service gets from customers, encouraging others to join the hype!",
     "keywords": [
+        "user",
         "model",
         "rinvex",
         "laravel",
         "eloquent",
-        "testimonial",
         "testimonials",
-        "recommendations",
-        "polymorphic",
-        "attestant"
+        "recommendations"
     ],
     "license": "MIT",
     "homepage": "https://rinvex.com",
