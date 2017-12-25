@@ -27,7 +27,7 @@
 
 ## Usage
 
-Add testimonials support to your user model simply use the `\Rinvex\Testimonials\Traits\HasTestimonials` trait.
+To add testimonials support to your eloquent models simply use `\Rinvex\Testimonials\Traits\HasTestimonials` trait.
 
 ### Create a new testimonial
 
