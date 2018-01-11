@@ -40,7 +40,7 @@ $testimonialBody = 'I have been using this service as my main learning resource 
 
 // These are three different ways to add a new testimonial, and get the same result
 $user->testimonials()->save($testimonial->fill(['body' => $testimonialBody]));
-$testimonial->create(['user_id' => $user->id, 'body' => $testimonialBody]);
+$testimonial->create(['user_id' => $user->getKey(), 'body' => $testimonialBody]);
 $user->testimonials()->create(['body' => $testimonialBody]);
 ```
 
