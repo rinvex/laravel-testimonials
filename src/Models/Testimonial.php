@@ -8,30 +8,37 @@ use Illuminate\Database\Eloquent\Model;
 use Rinvex\Cacheable\CacheableEloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Rinvex\Support\Traits\ValidatingTrait;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Rinvex\Testimonials\Contracts\TestimonialContract;
 
 /**
  * Rinvex\Testimonials\Models\Testimonial.
  *
  * @property int                                                                             $id
- * @property int                                                                             $user_id
+ * @property int                                                                             $subject_id
+ * @property string                                                                          $subject_type
+ * @property int                                                                             $attestant_id
+ * @property string                                                                          $attestant_type
  * @property bool                                                                            $is_approved
  * @property string                                                                          $body
  * @property \Carbon\Carbon|null                                                             $created_at
  * @property \Carbon\Carbon|null                                                             $updated_at
  * @property \Carbon\Carbon|null                                                             $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent                              $user
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent                              $attestant
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent                              $subject
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Testimonials\Models\Testimonial approved()
  * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Testimonials\Models\Testimonial disapproved()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Testimonials\Models\Testimonial whereAttestantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Testimonials\Models\Testimonial whereAttestantType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Testimonials\Models\Testimonial whereBody($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Testimonials\Models\Testimonial whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Testimonials\Models\Testimonial whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Testimonials\Models\Testimonial whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Testimonials\Models\Testimonial whereIsApproved($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Testimonials\Models\Testimonial whereSubjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Testimonials\Models\Testimonial whereSubjectType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Testimonials\Models\Testimonial whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Testimonials\Models\Testimonial whereUserId($value)
  * @mixin \Eloquent
  */
 class Testimonial extends Model implements TestimonialContract
@@ -43,7 +50,10 @@ class Testimonial extends Model implements TestimonialContract
      * {@inheritdoc}
      */
     protected $fillable = [
-        'user_id',
+        'subject_id',
+        'subject_type',
+        'attestant_id',
+        'attestant_type',
         'is_approved',
         'body',
     ];
@@ -52,7 +62,10 @@ class Testimonial extends Model implements TestimonialContract
      * {@inheritdoc}
      */
     protected $casts = [
-        'user_id' => 'integer',
+        'subject_id' => 'integer',
+        'subject_type' => 'string',
+        'attestant_id' => 'integer',
+        'attestant_type' => 'string',
         'is_approved' => 'boolean',
         'body' => 'string',
         'deleted_at' => 'datetime',
@@ -72,7 +85,10 @@ class Testimonial extends Model implements TestimonialContract
      * @var array
      */
     protected $rules = [
-        'user_id' => 'required|integer',
+        'subject_id' => 'required|integer',
+        'subject_type' => 'required|string|max:150',
+        'attestant_id' => 'required|integer',
+        'attestant_type' => 'required|string|max:150',
         'is_approved' => 'sometimes|boolean',
         'body' => 'required|string|max:150',
     ];
@@ -95,6 +111,32 @@ class Testimonial extends Model implements TestimonialContract
         parent::__construct($attributes);
 
         $this->setTable(config('rinvex.testimonials.tables.testimonials'));
+    }
+
+    /**
+     * Get testimonials of the given subject.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     * @param \Illuminate\Database\Eloquent\Model   $subject
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfSubject(Builder $builder, Model $subject): Builder
+    {
+        return $builder->where('subject_type', $subject->getMorphClass())->where('subject_id', $subject->getKey());
+    }
+
+    /**
+     * Get testimonials of the given attestant.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     * @param \Illuminate\Database\Eloquent\Model   $attestant
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfAttestant(Builder $builder, Model $attestant): Builder
+    {
+        return $builder->where('attestant_type', $attestant->getMorphClass())->where('attestant_id', $attestant->getKey());
     }
 
     /**
@@ -122,13 +164,23 @@ class Testimonial extends Model implements TestimonialContract
     }
 
     /**
-     * Get the owner model of the testimonial.
+     * Get the subject model of the testimonial.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function user(): belongsTo
+    public function subject(): MorphTo
     {
-        return $this->belongsTo(config('auth.providers.users.model'), 'user_id', 'id');
+        return $this->morphTo();
+    }
+
+    /**
+     * Get the attestant model of the testimonial.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function attestant(): MorphTo
+    {
+        return $this->morphTo();
     }
 
     /**
