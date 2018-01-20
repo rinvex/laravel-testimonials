@@ -9,7 +9,6 @@ use Rinvex\Cacheable\CacheableEloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Rinvex\Support\Traits\ValidatingTrait;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Rinvex\Testimonials\Contracts\TestimonialContract;
 
 /**
  * Rinvex\Testimonials\Models\Testimonial.
@@ -41,7 +40,7 @@ use Rinvex\Testimonials\Contracts\TestimonialContract;
  * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Testimonials\Models\Testimonial whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class Testimonial extends Model implements TestimonialContract
+class Testimonial extends Model
 {
     use ValidatingTrait;
     use CacheableEloquent;

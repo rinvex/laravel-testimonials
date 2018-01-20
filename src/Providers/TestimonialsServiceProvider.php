@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Rinvex\Testimonials\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Rinvex\Testimonials\Contracts\TestimonialContract;
+use Rinvex\Testimonials\Models\Testimonial;
 use Rinvex\Testimonials\Console\Commands\MigrateCommand;
 use Rinvex\Testimonials\Console\Commands\PublishCommand;
 use Rinvex\Testimonials\Console\Commands\RollbackCommand;
@@ -35,7 +35,7 @@ class TestimonialsServiceProvider extends ServiceProvider
         $this->app->singleton('rinvex.testimonials.testimonial', function ($app) {
             return new $app['config']['rinvex.testimonials.models.testimonial']();
         });
-        $this->app->alias('rinvex.testimonials.testimonial', TestimonialContract::class);
+        $this->app->alias('rinvex.testimonials.testimonial', Testimonial::class);
 
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
