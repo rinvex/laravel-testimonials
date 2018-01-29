@@ -32,10 +32,8 @@ class TestimonialsServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'rinvex.testimonials');
 
         // Bind eloquent models to IoC container
-        $this->app->singleton('rinvex.testimonials.testimonial', function ($app) {
-            return new $app['config']['rinvex.testimonials.models.testimonial']();
-        });
-        $this->app->alias('rinvex.testimonials.testimonial', Testimonial::class);
+        $this->app->singleton('rinvex.testimonials.testimonial', $testimonialModel = $this->app['config']['rinvex.testimonials.models.testimonial']);
+        $testimonialModel === Testimonial::class || $this->app->alias('rinvex.testimonials.testimonial', Testimonial::class);
 
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
@@ -73,9 +71,7 @@ class TestimonialsServiceProvider extends ServiceProvider
     {
         // Register artisan commands
         foreach ($this->commands as $key => $value) {
-            $this->app->singleton($value, function ($app) use ($key) {
-                return new $key();
-            });
+            $this->app->singleton($value, $key);
         }
 
         $this->commands(array_values($this->commands));
