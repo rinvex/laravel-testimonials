@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Rinvex\Testimonials\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Rinvex\Testimonials\Contracts\TestimonialContract;
+use Rinvex\Testimonials\Models\Testimonial;
 use Rinvex\Testimonials\Console\Commands\MigrateCommand;
 use Rinvex\Testimonials\Console\Commands\PublishCommand;
 use Rinvex\Testimonials\Console\Commands\RollbackCommand;
@@ -32,10 +32,8 @@ class TestimonialsServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'rinvex.testimonials');
 
         // Bind eloquent models to IoC container
-        $this->app->singleton('rinvex.testimonials.testimonial', function ($app) {
-            return new $app['config']['rinvex.testimonials.models.testimonial']();
-        });
-        $this->app->alias('rinvex.testimonials.testimonial', TestimonialContract::class);
+        $this->app->singleton('rinvex.testimonials.testimonial', $testimonialModel = $this->app['config']['rinvex.testimonials.models.testimonial']);
+        $testimonialModel === Testimonial::class || $this->app->alias('rinvex.testimonials.testimonial', Testimonial::class);
 
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
@@ -58,7 +56,7 @@ class TestimonialsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function publishResources()
+    protected function publishResources(): void
     {
         $this->publishes([realpath(__DIR__.'/../../config/config.php') => config_path('rinvex.testimonials.php')], 'rinvex-testimonials-config');
         $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'rinvex-testimonials-migrations');
@@ -69,13 +67,11 @@ class TestimonialsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerCommands()
+    protected function registerCommands(): void
     {
         // Register artisan commands
         foreach ($this->commands as $key => $value) {
-            $this->app->singleton($value, function ($app) use ($key) {
-                return new $key();
-            });
+            $this->app->singleton($value, $key);
         }
 
         $this->commands(array_values($this->commands));
