@@ -2,19 +2,19 @@
 
 **Rinvex Testimonials** is a polymorphic Laravel package for managing testimonials. Customers can give you testimonials, and you can approve or disapprove each individually. Testimonials are good for showing the passion and love your service gets from customers, encouraging others to join the hype!
 
-[![Packagist](https://img.shields.io/packagist/v/rinvex/testimonials.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/rinvex/testimonials)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rinvex/testimonials.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/rinvex/testimonials/)
-[![Code Climate](https://img.shields.io/codeclimate/github/rinvex/testimonials.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/rinvex/testimonials)
-[![Travis](https://img.shields.io/travis/rinvex/testimonials.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/rinvex/testimonials)
+[![Packagist](https://img.shields.io/packagist/v/rinvex/laravel-testimonials.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/rinvex/laravel-testimonials)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rinvex/laravel-testimonials.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/rinvex/laravel-testimonials/)
+[![Code Climate](https://img.shields.io/codeclimate/github/rinvex/laravel-testimonials.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/rinvex/laravel-testimonials)
+[![Travis](https://img.shields.io/travis/rinvex/laravel-testimonials.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/rinvex/laravel-testimonials)
 [![StyleCI](https://styleci.io/repos/114939264/shield)](https://styleci.io/repos/114939264)
-[![License](https://img.shields.io/packagist/l/rinvex/testimonials.svg?label=License&style=flat-square)](https://github.com/rinvex/testimonials/blob/develop/LICENSE)
+[![License](https://img.shields.io/packagist/l/rinvex/laravel-testimonials.svg?label=License&style=flat-square)](https://github.com/rinvex/laravel-testimonials/blob/develop/LICENSE)
 
 
 ## Installation
 
 1. Install the package via composer:
     ```shell
-    composer require rinvex/testimonials
+    composer require rinvex/laravel-testimonials
     ```
 
 2. Execute migrations via the following command:
