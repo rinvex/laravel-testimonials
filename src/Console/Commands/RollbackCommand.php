@@ -30,6 +30,6 @@ class RollbackCommand extends Command
     public function handle(): void
     {
         $this->warn($this->description);
-        $this->call('migrate:reset', ['--path' => 'vendor/rinvex/testimonials/database/migrations', '--force' => $this->option('force')]);
+        $this->call('migrate:reset', ['--path' => 'vendor/rinvex/laravel-testimonials/database/migrations', '--force' => $this->option('force')]);
     }
 }
