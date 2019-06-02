@@ -4,7 +4,6 @@
 
 [![Packagist](https://img.shields.io/packagist/v/rinvex/laravel-testimonials.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/rinvex/laravel-testimonials)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rinvex/laravel-testimonials.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/rinvex/laravel-testimonials/)
-[![Code Climate](https://img.shields.io/codeclimate/github/rinvex/laravel-testimonials.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/rinvex/laravel-testimonials)
 [![Travis](https://img.shields.io/travis/rinvex/laravel-testimonials.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/rinvex/laravel-testimonials)
 [![StyleCI](https://styleci.io/repos/114939264/shield)](https://styleci.io/repos/114939264)
 [![License](https://img.shields.io/packagist/l/rinvex/laravel-testimonials.svg?label=License&style=flat-square)](https://github.com/rinvex/laravel-testimonials/blob/develop/LICENSE)
