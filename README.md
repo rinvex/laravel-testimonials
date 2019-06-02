@@ -17,14 +17,14 @@
     composer require rinvex/laravel-testimonials
     ```
 
-2. Execute migrations via the following command:
-    ```
-    php artisan rinvex:migrate:testimonials
-    ```
-
-3. **Optional** if you want to change the configurations:
+2. Publish resources (migrations and config files):
     ```shell
     php artisan rinvex:publish:testimonials
+    ```
+
+3. Execute migrations via the following command:
+    ```shell
+    php artisan rinvex:migrate:testimonials
     ```
 
 4. Done!
