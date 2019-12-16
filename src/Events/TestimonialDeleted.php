@@ -54,6 +54,6 @@ class TestimonialDeleted implements ShouldBroadcast
      */
     protected function formatChannelName(): string
     {
-        return 'rinvex.testimonials.count';
+        return 'rinvex.testimonials.list';
     }
 }

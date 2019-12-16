@@ -44,7 +44,7 @@ class TestimonialSaved implements ShouldBroadcast
      */
     public function broadcastAs()
     {
-        return 'rinvex.testimonials.created';
+        return 'rinvex.testimonials.saved';
     }
 
     /**
@@ -54,6 +54,6 @@ class TestimonialSaved implements ShouldBroadcast
      */
     protected function formatChannelName(): string
     {
-        return 'rinvex.testimonials.count';
+        return 'rinvex.testimonials.list';
     }
 }
