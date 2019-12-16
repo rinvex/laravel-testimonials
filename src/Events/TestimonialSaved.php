@@ -7,11 +7,13 @@ namespace Rinvex\Testimonials\Events;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Rinvex\Testimonials\Models\Testimonial;
+use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class TestimonialCreated implements ShouldBroadcast
+class TestimonialSaved implements ShouldBroadcast
 {
     use SerializesModels;
+    Use InteractsWithSockets;
 
     public $testimonial;
 
