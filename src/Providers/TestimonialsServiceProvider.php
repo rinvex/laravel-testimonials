@@ -50,5 +50,6 @@ class TestimonialsServiceProvider extends ServiceProvider
         // Publish Resources
         ! $this->app->runningInConsole() || $this->publishesConfig('rinvex/laravel-testimonials');
         ! $this->app->runningInConsole() || $this->publishesMigrations('rinvex/laravel-testimonials');
+        ! $this->app['config']['rinvex.testimonials.autoload_migrations'] || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 }
