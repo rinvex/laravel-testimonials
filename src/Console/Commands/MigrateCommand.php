@@ -13,7 +13,7 @@ class MigrateCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'rinvex:migrate:testimonials {--force : Force the operation to run when in production.}';
+    protected $signature = 'rinvex:migrate:testimonials {--f|force : Force the operation to run when in production.}';
 
     /**
      * The console command description.
