@@ -12,7 +12,7 @@ class CreateTestimonialsTable extends Migration
     {
         Schema::create(config('rinvex.testimonials.tables.testimonials'), function (Blueprint $table) {
             // Columns
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->morphs('subject');
             $table->morphs('attestant');
             $table->boolean('is_approved')->default(false);
