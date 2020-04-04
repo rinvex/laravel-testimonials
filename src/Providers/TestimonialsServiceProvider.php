@@ -48,8 +48,8 @@ class TestimonialsServiceProvider extends ServiceProvider
     public function boot()
     {
         // Publish Resources
-        $this->publishesConfig('rinvex/laravel-testimonials');
-        $this->publishesMigrations('rinvex/laravel-testimonials');
-        ! $this->autoloadMigrations('rinvex.testimonials') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+        $this->publishesConfig('rinvex/testimonials');
+        $this->publishesMigrations('rinvex/testimonials');
+        ! $this->autoloadMigrations('rinvex/testimonials') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 }
