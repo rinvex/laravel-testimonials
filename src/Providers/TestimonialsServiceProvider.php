@@ -39,7 +39,7 @@ class TestimonialsServiceProvider extends ServiceProvider
         $testimonialModel === Testimonial::class || $this->app->alias('rinvex.testimonials.testimonial', Testimonial::class);
 
         // Register console commands
-        $this->registerCommands();
+        $this->registerCommands($this->commands);
     }
 
     /**
