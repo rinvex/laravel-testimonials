@@ -97,11 +97,11 @@ class Testimonial extends Model
      */
     protected $rules = [
         'subject_id' => 'required|integer',
-        'subject_type' => 'required|string|max:150',
+        'subject_type' => 'required|string|strip_tags|max:150',
         'attestant_id' => 'required|integer',
-        'attestant_type' => 'required|string|max:150',
+        'attestant_type' => 'required|string|strip_tags|max:150',
         'is_approved' => 'sometimes|boolean',
-        'body' => 'required|string|max:150',
+        'body' => 'required|string|strip_tags|max:150',
     ];
 
     /**
