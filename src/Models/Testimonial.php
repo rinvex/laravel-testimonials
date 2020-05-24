@@ -181,7 +181,7 @@ class Testimonial extends Model
      */
     public function subject(): MorphTo
     {
-        return $this->morphTo('subject', 'subject_type', 'subject_id');
+        return $this->morphTo('subject', 'subject_type', 'subject_id', 'id');
     }
 
     /**
@@ -191,7 +191,7 @@ class Testimonial extends Model
      */
     public function attestant(): MorphTo
     {
-        return $this->morphTo('attestant', 'attestant_type', 'attestant_id');
+        return $this->morphTo('attestant', 'attestant_type', 'attestant_id', 'id');
     }
 
     /**
