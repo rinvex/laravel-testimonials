@@ -97,11 +97,11 @@ class Testimonial extends Model
      */
     protected $rules = [
         'subject_id' => 'required|integer',
-        'subject_type' => 'required|string|max:150',
+        'subject_type' => 'required|string|strip_tags|max:150',
         'attestant_id' => 'required|integer',
-        'attestant_type' => 'required|string|max:150',
+        'attestant_type' => 'required|string|strip_tags|max:150',
         'is_approved' => 'sometimes|boolean',
-        'body' => 'required|string|max:150',
+        'body' => 'required|string|strip_tags|max:150',
     ];
 
     /**
@@ -181,7 +181,7 @@ class Testimonial extends Model
      */
     public function subject(): MorphTo
     {
-        return $this->morphTo('subject', 'subject_type', 'subject_id');
+        return $this->morphTo('subject', 'subject_type', 'subject_id', 'id');
     }
 
     /**
@@ -191,7 +191,7 @@ class Testimonial extends Model
      */
     public function attestant(): MorphTo
     {
-        return $this->morphTo('attestant', 'attestant_type', 'attestant_id');
+        return $this->morphTo('attestant', 'attestant_type', 'attestant_id', 'id');
     }
 
     /**
