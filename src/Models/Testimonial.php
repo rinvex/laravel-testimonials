@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Rinvex\Testimonials\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Rinvex\Cacheable\CacheableEloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Rinvex\Support\Traits\ValidatingTrait;
 use Rinvex\Testimonials\Events\TestimonialSaved;
@@ -45,7 +44,6 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class Testimonial extends Model
 {
     use ValidatingTrait;
-    use CacheableEloquent;
 
     /**
      * {@inheritdoc}
