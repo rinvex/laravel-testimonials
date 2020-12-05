@@ -5,14 +5,16 @@ declare(strict_types=1);
 namespace Rinvex\Testimonials\Events;
 
 use Rinvex\Testimonials\Models\Testimonial;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class TestimonialDeleted implements ShouldBroadcast
+class TestimonialCreated implements ShouldBroadcast
 {
     use InteractsWithSockets;
+    use SerializesModels;
     use Dispatchable;
 
     /**
@@ -36,7 +38,7 @@ class TestimonialDeleted implements ShouldBroadcast
      */
     public function __construct(Testimonial $testimonial)
     {
-        $this->model = $testimonial->withoutRelations();
+        $this->model = $testimonial;
     }
 
     /**
@@ -48,7 +50,6 @@ class TestimonialDeleted implements ShouldBroadcast
     {
         return [
             new PrivateChannel('rinvex.testimonials.testimonials.index'),
-            new PrivateChannel("rinvex.testimonials.testimonials.{$this->model->getRouteKey()}"),
         ];
     }
 
@@ -59,6 +60,6 @@ class TestimonialDeleted implements ShouldBroadcast
      */
     public function broadcastAs()
     {
-        return 'testimonial.deleted';
+        return 'testimonial.created';
     }
 }

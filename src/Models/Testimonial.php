@@ -7,8 +7,10 @@ namespace Rinvex\Testimonials\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Rinvex\Support\Traits\ValidatingTrait;
-use Rinvex\Testimonials\Events\TestimonialSaved;
+use Rinvex\Testimonials\Events\TestimonialCreated;
 use Rinvex\Testimonials\Events\TestimonialDeleted;
+use Rinvex\Testimonials\Events\TestimonialUpdated;
+use Rinvex\Testimonials\Events\TestimonialRestored;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**
@@ -84,8 +86,10 @@ class Testimonial extends Model
      * @var array
      */
     protected $dispatchesEvents = [
-        'saved' => TestimonialSaved::class,
+        'created' => TestimonialCreated::class,
+        'updated' => TestimonialUpdated::class,
         'deleted' => TestimonialDeleted::class,
+        'restored' => TestimonialRestored::class,
     ];
 
     /**
