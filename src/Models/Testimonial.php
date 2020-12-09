@@ -7,10 +7,6 @@ namespace Rinvex\Testimonials\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Rinvex\Support\Traits\ValidatingTrait;
-use Rinvex\Testimonials\Events\TestimonialCreated;
-use Rinvex\Testimonials\Events\TestimonialDeleted;
-use Rinvex\Testimonials\Events\TestimonialUpdated;
-use Rinvex\Testimonials\Events\TestimonialRestored;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**
@@ -78,18 +74,6 @@ class Testimonial extends Model
     protected $observables = [
         'validating',
         'validated',
-    ];
-
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
-    protected $dispatchesEvents = [
-        'created' => TestimonialCreated::class,
-        'updated' => TestimonialUpdated::class,
-        'deleted' => TestimonialDeleted::class,
-        'restored' => TestimonialRestored::class,
     ];
 
     /**
