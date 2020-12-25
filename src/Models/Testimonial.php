@@ -12,16 +12,16 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 /**
  * Rinvex\Testimonials\Models\Testimonial.
  *
- * @property int                                                                             $id
- * @property int                                                                             $subject_id
- * @property string                                                                          $subject_type
- * @property int                                                                             $attestant_id
- * @property string                                                                          $attestant_type
- * @property bool                                                                            $is_approved
- * @property string                                                                          $body
- * @property \Carbon\Carbon|null                                                             $created_at
- * @property \Carbon\Carbon|null                                                             $updated_at
- * @property \Carbon\Carbon|null                                                             $deleted_at
+ * @property int                 $id
+ * @property int                 $subject_id
+ * @property string              $subject_type
+ * @property int                 $attestant_id
+ * @property string              $attestant_type
+ * @property bool                $is_approved
+ * @property string              $body
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent                              $attestant
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent                              $subject
  *
