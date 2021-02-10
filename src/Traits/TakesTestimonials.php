@@ -51,7 +51,7 @@ trait TakesTestimonials
      */
     public function testimonials(): MorphMany
     {
-        return $this->morphMany(config('rinvex.testimonials.models.testimonial'), 'attestant');
+        return $this->morphMany(config('rinvex.testimonials.models.testimonial'), 'attestant', 'attestant_type', 'attestant_id');
     }
 
     /**
