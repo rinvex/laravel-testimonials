@@ -7,6 +7,7 @@ namespace Rinvex\Testimonials\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Rinvex\Support\Traits\ValidatingTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**
@@ -41,6 +42,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  */
 class Testimonial extends Model
 {
+    use SoftDeletes;
     use ValidatingTrait;
 
     /**
