@@ -83,14 +83,7 @@ class Testimonial extends Model
      *
      * @var array
      */
-    protected $rules = [
-        'subject_id' => 'required|integer',
-        'subject_type' => 'required|string|strip_tags|max:150',
-        'attestant_id' => 'required|integer',
-        'attestant_type' => 'required|string|strip_tags|max:150',
-        'is_approved' => 'sometimes|boolean',
-        'body' => 'required|string|strip_tags|max:150',
-    ];
+    protected $rules = [];
 
     /**
      * Whether the model should throw a
@@ -110,6 +103,14 @@ class Testimonial extends Model
         parent::__construct($attributes);
 
         $this->setTable(config('rinvex.testimonials.tables.testimonials'));
+        $this->setRules([
+            'subject_id' => 'required|integer',
+            'subject_type' => 'required|string|strip_tags|max:150',
+            'attestant_id' => 'required|integer',
+            'attestant_type' => 'required|string|strip_tags|max:150',
+            'is_approved' => 'sometimes|boolean',
+            'body' => 'required|string|strip_tags|max:150',
+        ]);
     }
 
     /**
