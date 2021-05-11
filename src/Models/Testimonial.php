@@ -100,8 +100,6 @@ class Testimonial extends Model
      */
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->setTable(config('rinvex.testimonials.tables.testimonials'));
         $this->setRules([
             'subject_id' => 'required|integer',
@@ -111,6 +109,8 @@ class Testimonial extends Model
             'is_approved' => 'sometimes|boolean',
             'body' => 'required|string|strip_tags|max:150',
         ]);
+
+        parent::__construct($attributes);
     }
 
     /**
