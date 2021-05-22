@@ -101,7 +101,7 @@ class Testimonial extends Model
     public function __construct(array $attributes = [])
     {
         $this->setTable(config('rinvex.testimonials.tables.testimonials'));
-        $this->setRules([
+        $this->mergeRules([
             'subject_id' => 'required|integer',
             'subject_type' => 'required|string|strip_tags|max:150',
             'attestant_id' => 'required|integer',
