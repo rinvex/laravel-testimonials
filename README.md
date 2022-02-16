@@ -1,7 +1,10 @@
 # Rinvex Testimonials
 
-This package is NOT actively maintained! Want to jump in as a maintainer? Ping me [@omranic](https://twitter.com/omranic)
+⚠️ This package is abandoned and no longer maintained. No replacement package was suggested. ⚠️
 
+👉 If you are interested to step on as the main maintainer of this package, please [reach out to me](https://twitter.com/omranic)!
+
+---
 
 **Rinvex Testimonials** is a polymorphic Laravel package for managing testimonials. Customers can give you testimonials, and you can approve or disapprove each individually. Testimonials are good for showing the passion and love your service gets from customers, encouraging others to join the hype!
 
